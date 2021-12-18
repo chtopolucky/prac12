@@ -1,0 +1,110 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d" Height="450" Width="344" Background="White" Loaded="Window_Loaded" ResizeMode="CanMinimize" Title="Практическая работа №12" Icon="/znak_06.bmp">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="206*"/>
+            <ColumnDefinition Width="139*"/>
+        </Grid.ColumnDefinitions>
+        <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="334" Background="White" Grid.ColumnSpan="2">
+            <MenuItem Header="О программе" Click="Info_Click" ToolTip="Кнопка вывода сведений о программе"></MenuItem>
+            <MenuItem Header="Выход" Click="Exit_Click" ToolTip="Кнопка выхода"></MenuItem>
+        </Menu>
+        <ToolBar HorizontalAlignment="Left" Height="25" Margin="0,22,0,0" VerticalAlignment="Top" Width="326" Background="White" Grid.ColumnSpan="2">
+            <Button Content="Очистить" Click="Clear_Click" ToolTip="Кнопка очищения всех полей"></Button>
+            <Button Click="Clear_Click" ToolTip="Кнопка очищения всех полей">
+
+            </Button>
+            <Separator></Separator>
+            <Button Content="Рассчитать" Click="Calculate_Click" ToolTip="Кнопка расчета обеих задач"></Button>
+            <Button Click="Calculate_Click" ToolTip="Кнопка расчета обеих задач">
+
+            </Button>
+        </ToolBar>
+        <StatusBar HorizontalAlignment="Left" Margin="0,386,0,0" Width="336" Background="White" Grid.ColumnSpan="2">
+            <TextBlock x:Name="time" Text="12:12" ToolTip="Текущее время"></TextBlock>
+            <Separator></Separator>
+            <TextBlock x:Name="data" Text="20.07.2021" ToolTip="Текущая дата"></TextBlock>
+            <Separator></Separator>
+            <TextBlock x:Name="number" Text="Вариант №11" ToolTip="Вариант задач"></TextBlock>
+        </StatusBar>
+        <TabControl HorizontalAlignment="Left" Height="337" VerticalAlignment="Top" Width="326" Background="Black" Margin="9,52,0,0" BorderBrush="#FFFAD0FF" Grid.ColumnSpan="2">
+            <TabItem Header="1 Задание" BorderBrush="#FFFAD0FF" ToolTip="Блок содержащий задачу 1">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="White">
+                    <GroupBox Header="Исходные данные" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="310" Margin="10,10,0,0" ToolTip="Исходные данные 1 задачи" Background="White">
+                        <GroupBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Сведения о данных" Click="InfoFirstData_Click"></MenuItem>
+                            </ContextMenu>
+                        </GroupBox.ContextMenu>
+                        <Grid>
+                            <TextBox x:Name="x1" Margin="10,10,213,66" TextChanged="x1_TextChanged"></TextBox>
+                            <TextBox x:Name="y2" Margin="140,53,76,23" TextChanged="y2_TextChanged"/>
+                            <TextBox x:Name="y1" Margin="140,10,76,66" TextChanged="y1_TextChanged"/>
+                            <TextBox x:Name="x2" Margin="10,53,213,23" TextChanged="x2_TextChanged"/>
+                            <Label Content="- У2" HorizontalAlignment="Left" Margin="227,53,0,0" VerticalAlignment="Top"/>
+                            <Label Content="- У1" HorizontalAlignment="Left" Margin="227,12,0,0" VerticalAlignment="Top"/>
+                            <Label Content="- Х2" HorizontalAlignment="Left" Margin="90,53,0,0" VerticalAlignment="Top"/>
+                            <Label Content="- Х1" HorizontalAlignment="Left" Margin="90,12,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Результат" HorizontalAlignment="Left" Height="154" Margin="10,142,0,0" VerticalAlignment="Top" Width="310" ToolTip="Результат расчетов 1 задачи" Background="White">
+                        <GroupBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Сведения о результате" Click="InfoFirstResult_Click"></MenuItem>
+                            </ContextMenu>
+                        </GroupBox.ContextMenu>
+                        <Grid HorizontalAlignment="Left" Height="159" Margin="0,0,-2,-13" VerticalAlignment="Top" Width="300">
+                            <Button Margin="140,29,22,99" Content="Рассчитать площадь" Click="Square_Click" ToolTip="Кнопка расчета первой задачи" BorderBrush="White" Background="White"></Button>
+                            <Button Margin="140,101,22,27" Content="Рассчитать периметр" Click="Perimetr_Click" ToolTip="Кнопка расчета первой задачи" Background="White" BorderBrush="White"/>
+                            <TextBox x:Name="resultSquare" Margin="10,29,178,99" IsReadOnly="True"></TextBox>
+                            <TextBox x:Name="resultPerimetr" Margin="10,101,178,27" IsReadOnly="True"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="2 Задание" ToolTip="Блок содержащий задачу 2" BorderBrush="White">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="White" Margin="0,0,0,-2">
+                    <GroupBox Header="Результат" HorizontalAlignment="Left" Height="147" Margin="10,151,0,0" VerticalAlignment="Top" Width="310" ToolTip="Результат расчета задачи 2" Background="White">
+                        <GroupBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Сведения о результате" Click="InfoSecondResult_Click"></MenuItem>
+                            </ContextMenu>
+                        </GroupBox.ContextMenu>
+                        <Grid>
+                            <TextBox x:Name="result" Margin="10,53,165,45" IsReadOnly="True"></TextBox>
+                            <Button Content="Выделить Килобайты" HorizontalAlignment="Left" Margin="158,53,0,0" VerticalAlignment="Top" Width="130" Height="26" Click="CalculateSizeKilobytes_Click" ToolTip="Кнопка расчета второй задачи" BorderBrush="White" Background="White"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Исходные данные" HorizontalAlignment="Left" Height="136" Margin="10,10,0,0" VerticalAlignment="Top" Width="310" ToolTip="Исходные данные задачи 2" Background="White">
+                        <GroupBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Сведения о данных" Click="InfoSecondData_Click"></MenuItem>
+                            </ContextMenu>
+                        </GroupBox.ContextMenu>
+                        <Grid>
+                            <TextBox x:Name="size" Margin="10,43,165,44" TextChanged="size_TextChanged"></TextBox>
+                            <Label Content="- Данный размер файла" HorizontalAlignment="Left" Margin="146,43,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
